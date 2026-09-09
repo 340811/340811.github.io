@@ -1,0 +1,276 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>吴韶涵 — 游戏策划 Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #12121a;
+  --bg-card: #1a1a28;
+  --bg-card-hover: #222236;
+  --text-primary: #eeecf0;
+  --text-secondary: #9896a8;
+  --text-muted: #5e5c72;
+  --accent-amber: #f5a623;
+  --accent-amber-dim: rgba(245,166,35,0.12);
+  --accent-cyan: #5bc0de;
+  --accent-cyan-dim: rgba(91,192,222,0.10);
+  --border-subtle: rgba(238,236,240,0.06);
+  --border-card: rgba(238,236,240,0.08);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --font-cn: 'Noto Sans SC', -apple-system, 'Microsoft YaHei', sans-serif;
+  --font-en: 'Inter', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --max-width: 1120px;
+  --nav-height: 64px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:var(--nav-height)}
+body{font-family:var(--font-cn);background:var(--bg-primary);color:var(--text-primary);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--accent-amber);color:var(--bg-primary)}
+.nav{position:fixed;top:0;left:0;right:0;height:var(--nav-height);display:flex;align-items:center;justify-content:center;z-index:100;background:rgba(10,10,15,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle)}
+.nav-inner{width:100%;max-width:var(--max-width);padding:0 24px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-weight:700;font-size:1.15rem;letter-spacing:0.04em;color:var(--text-primary)}
+.nav-logo span{color:var(--accent-amber)}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none}
+.nav-links a{font-size:0.875rem;font-weight:500;color:var(--text-secondary);transition:color 0.2s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--accent-amber);transition:width 0.25s ease;border-radius:2px}
+.nav-links a:hover{color:var(--text-primary)}
+.nav-links a:hover::after{width:100%}
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 24px 80px;position:relative;overflow:hidden}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(245,166,35,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(245,166,35,0.03) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse at center,black 30%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse at center,black 30%,transparent 70%);pointer-events:none}
+.hero-glow{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(245,166,35,0.06) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;animation:pulseGlow 6s ease-in-out infinite alternate}
+@keyframes pulseGlow{0%{opacity:0.5;transform:translate(-50%,-50%) scale(1)}100%{opacity:1;transform:translate(-50%,-50%) scale(1.3)}}
+.hero-content{position:relative;z-index:1}
+.hero-eyebrow{font-family:var(--font-en);font-size:0.8rem;font-weight:500;letter-spacing:0.35em;text-transform:uppercase;color:var(--accent-amber);margin-bottom:20px;opacity:0;animation:fadeUp 0.8s ease forwards}
+.hero-name{font-size:clamp(3.5rem,10vw,7rem);font-weight:900;letter-spacing:0.03em;line-height:1.1;margin-bottom:16px;opacity:0;animation:fadeUp 0.8s ease 0.15s forwards}
+.hero-name .en{font-family:var(--font-en);font-weight:300;font-size:0.45em;display:block;color:var(--text-secondary);letter-spacing:0.25em;margin-top:4px}
+.hero-title{font-size:clamp(1rem,2vw,1.25rem);color:var(--text-secondary);font-weight:400;margin-bottom:40px;opacity:0;animation:fadeUp 0.8s ease 0.3s forwards}
+.hero-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;opacity:0;animation:fadeUp 0.8s ease 0.45s forwards}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border-radius:var(--radius-sm);font-family:var(--font-cn);font-weight:500;font-size:0.9rem;cursor:pointer;transition:all 0.25s ease;border:none}
+.btn-primary{background:var(--accent-amber);color:var(--bg-primary)}
+.btn-primary:hover{background:#e0961e;transform:translateY(-2px);box-shadow:0 8px 24px rgba(245,166,35,0.2)}
+.btn-outline{background:transparent;color:var(--text-primary);border:1px solid var(--border-card)}
+.btn-outline:hover{border-color:var(--accent-amber);color:var(--accent-amber);transform:translateY(-2px)}
+.scroll-indicator{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--text-muted);font-size:0.75rem;font-family:var(--font-en);letter-spacing:0.1em;opacity:0;animation:fadeUp 0.8s ease 0.7s forwards}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--text-muted),transparent);animation:scrollPulse 2s ease-in-out infinite}
+@keyframes scrollPulse{0%,100%{opacity:0.3}50%{opacity:1}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.section{padding:100px 24px}
+.section-inner{max-width:var(--max-width);margin:0 auto}
+.section-header{text-align:center;margin-bottom:64px}
+.section-tag{font-family:var(--font-en);font-size:0.75rem;font-weight:500;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent-amber);margin-bottom:12px}
+.section-title{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;letter-spacing:0.02em}
+.section-sub{color:var(--text-secondary);font-size:1rem;margin-top:12px;max-width:600px;margin-left:auto;margin-right:auto}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.about-text h3{font-size:1.5rem;font-weight:600;margin-bottom:16px}
+.about-text p{color:var(--text-secondary);font-size:0.95rem;margin-bottom:16px;line-height:1.8}
+.about-highlights{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.highlight-card{background:var(--bg-card);border:1px solid var(--border-card);border-radius:var(--radius-md);padding:24px;transition:all 0.25s ease}
+.highlight-card:hover{background:var(--bg-card-hover);transform:translateY(-2px);border-color:rgba(245,166,35,0.2)}
+.highlight-icon{width:40px;height:40px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;margin-bottom:12px;font-size:1.2rem}
+.highlight-icon.amber{background:var(--accent-amber-dim);color:var(--accent-amber)}
+.highlight-icon.cyan{background:var(--accent-cyan-dim);color:var(--accent-cyan)}
+.highlight-card h4{font-size:1rem;font-weight:600;margin-bottom:4px}
+.highlight-card p{font-size:0.82rem;color:var(--text-secondary);line-height:1.5}
+.projects{background:var(--bg-secondary)}
+.project-card{background:var(--bg-card);border:1px solid var(--border-card);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:48px;transition:all 0.3s ease}
+.project-card:hover{border-color:rgba(245,166,35,0.15);box-shadow:0 12px 40px rgba(0,0,0,0.3)}
+.project-media{position:relative;background:#000;aspect-ratio:16/9;overflow:hidden}
+.project-media video{width:100%;height:100%;object-fit:cover;display:block}
+.project-badge{position:absolute;top:16px;left:16px;background:rgba(0,0,0,0.6);backdrop-filter:blur(8px);padding:6px 14px;border-radius:var(--radius-sm);font-size:0.75rem;font-family:var(--font-mono);z-index:2}
+.video-play-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.3);cursor:pointer;transition:opacity 0.3s;z-index:3;color:white;opacity:0;pointer-events:none}
+.project-media:hover .video-play-overlay{opacity:1;pointer-events:auto}
+.project-info{padding:36px 40px}
+.project-info h3{font-size:1.5rem;font-weight:700;margin-bottom:4px}
+.project-subtitle{color:var(--accent-amber);font-size:0.85rem;font-weight:500;margin-bottom:16px}
+.project-desc{color:var(--text-secondary);font-size:0.92rem;line-height:1.7;margin-bottom:20px}
+.project-tech{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.tech-tag{background:rgba(238,236,240,0.05);border:1px solid rgba(238,236,240,0.08);padding:4px 12px;border-radius:var(--radius-sm);font-size:0.75rem;font-family:var(--font-mono);color:var(--text-secondary)}
+.project-notes{background:rgba(245,166,35,0.04);border-left:2px solid var(--accent-amber);padding:16px 20px;border-radius:0 var(--radius-sm) var(--radius-sm) 0;margin-top:16px}
+.project-notes h4{font-size:0.85rem;font-weight:600;color:var(--accent-amber);margin-bottom:8px}
+.project-notes ul{list-style:none;padding:0}
+.project-notes li{font-size:0.82rem;color:var(--text-secondary);line-height:1.6;padding-left:16px;position:relative;margin-bottom:4px}
+.project-notes li::before{content:'\2192';position:absolute;left:0;color:var(--accent-amber)}
+.project-links{display:flex;gap:12px;margin-top:20px}
+.btn-code{background:transparent;color:var(--text-primary);border:1px solid var(--border-card);font-size:0.8rem;padding:8px 18px;border-radius:var(--radius-sm);cursor:pointer;font-family:var(--font-cn);font-weight:500;transition:all 0.25s ease}
+.btn-code:hover{border-color:var(--accent-cyan);color:var(--accent-cyan)}
+.analysis-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px}
+.analysis-card{background:var(--bg-card);border:1px solid var(--border-card);border-radius:var(--radius-md);padding:32px;transition:all 0.25s ease}
+.analysis-card:hover{background:var(--bg-card-hover);transform:translateY(-2px);border-color:rgba(91,192,222,0.15)}
+.analysis-card .game-icon{font-size:2rem;margin-bottom:12px}
+.analysis-card h4{font-size:1.1rem;font-weight:600;margin-bottom:8px}
+.analysis-card p{font-size:0.85rem;color:var(--text-secondary);line-height:1.7}
+.analysis-card .tag{display:inline-block;font-size:0.7rem;font-family:var(--font-mono);color:var(--accent-cyan);background:var(--accent-cyan-dim);padding:2px 10px;border-radius:12px;margin-bottom:12px}
+.report-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.report-card{background:var(--bg-card);border:1px solid var(--border-card);border-radius:var(--radius-lg);overflow:hidden;transition:all 0.3s ease;display:flex;flex-direction:column}
+.report-card:hover{border-color:rgba(245,166,35,0.15);box-shadow:0 12px 40px rgba(0,0,0,0.3);transform:translateY(-3px)}
+.report-media{position:relative;background:#000;aspect-ratio:16/9;overflow:hidden}
+.report-media img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;transition:transform 0.4s ease}
+.report-card:hover .report-media img{transform:scale(1.03)}
+.report-badge{position:absolute;top:14px;left:14px;background:rgba(0,0,0,0.65);backdrop-filter:blur(8px);padding:5px 14px;border-radius:var(--radius-sm);font-size:0.75rem;font-family:var(--font-mono);z-index:2;color:var(--text-primary)}
+.report-info{padding:28px 32px;flex:1;display:flex;flex-direction:column}
+.report-info h3{font-size:1.25rem;font-weight:700;margin-bottom:6px}
+.report-meta{color:var(--accent-amber);font-size:0.8rem;font-weight:500;margin-bottom:14px;font-family:var(--font-mono)}
+.report-desc{color:var(--text-secondary);font-size:0.88rem;line-height:1.7;margin-bottom:16px}
+.report-footer{margin-top:auto;padding-top:16px;display:flex;align-items:center;justify-content:space-between}
+.report-pages{font-size:0.75rem;color:var(--text-muted);font-family:var(--font-mono)}
+.report-card-horizontal{display:grid;grid-template-columns:1.15fr 1fr;min-height:340px}
+.report-card-horizontal .report-media{aspect-ratio:auto;height:100%}
+.report-card-horizontal .report-media img{object-fit:cover;object-position:center center}
+.report-card{cursor:pointer;position:relative;transition:border-color 0.3s,box-shadow 0.3s}
+.report-card.expanded{grid-column:1/-1;border-color:rgba(245,166,35,0.25);box-shadow:0 16px 48px rgba(0,0,0,0.4)}
+.report-card.expanded .report-info{padding:36px 44px}
+.report-card.expanded .report-media img{border-radius:0}
+.report-card .report-media{transition:aspect-ratio 0.4s ease,height 0.4s ease}
+.report-card.expanded .report-media{aspect-ratio:auto;height:auto;overflow:visible}
+.report-card.expanded .report-media img{object-fit:contain;width:100%;height:auto}
+.report-card-horizontal.expanded{grid-template-columns:1fr;min-height:auto}
+.report-card-horizontal.expanded .report-media{order:2}
+.report-card-horizontal.expanded .report-info{order:1}
+.report-card .report-pages{transition:color 0.2s}
+.report-card.expanded .report-pages{color:var(--accent-amber)}
+.resume-cta{text-align:center;background:var(--bg-secondary)}
+.resume-cta .section-inner{display:flex;flex-direction:column;align-items:center;gap:20px}
+.resume-cta p{color:var(--text-secondary);font-size:0.95rem;max-width:480px}
+.btn-resume{background:transparent;color:var(--accent-amber);border:1px solid var(--accent-amber);padding:14px 36px;font-size:1rem;border-radius:var(--radius-sm);cursor:pointer;font-family:var(--font-cn);font-weight:500;display:inline-flex;align-items:center;gap:10px;transition:all 0.25s ease;text-decoration:none}
+.btn-resume:hover{background:var(--accent-amber);color:var(--bg-primary);transform:translateY(-2px);box-shadow:0 8px 24px rgba(245,166,35,0.15)}
+.footer{padding:40px 24px;text-align:center;border-top:1px solid var(--border-subtle)}
+.footer p{font-size:0.8rem;color:var(--text-muted)}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);backdrop-filter:blur(8px);z-index:200;align-items:center;justify-content:center;padding:24px}
+.modal-overlay.active{display:flex}
+.modal-content{background:var(--bg-card);border:1px solid var(--border-card);border-radius:var(--radius-lg);width:100%;max-width:800px;max-height:80vh;overflow:hidden;display:flex;flex-direction:column}
+.modal-header{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-bottom:1px solid var(--border-subtle)}
+.modal-header h3{font-size:1rem;font-weight:600;font-family:var(--font-mono)}
+.modal-close{background:none;border:none;color:var(--text-secondary);font-size:1.5rem;cursor:pointer;padding:4px;line-height:1;transition:color 0.2s}
+.modal-close:hover{color:var(--text-primary)}
+.modal-body{overflow-y:auto;padding:24px}
+.modal-body pre{font-family:var(--font-mono);font-size:0.78rem;line-height:1.6;color:var(--text-secondary);white-space:pre-wrap;word-break:break-all}
+
+
+@media(max-width:768px){.nav-links{gap:20px}.nav-links a{font-size:0.8rem}.about-grid{grid-template-columns:1fr;gap:32px}.about-highlights{grid-template-columns:1fr}.project-info{padding:24px}.analysis-grid{grid-template-columns:1fr}.report-grid{grid-template-columns:1fr}.report-card-horizontal{grid-template-columns:1fr;min-height:auto}.report-card-horizontal .report-media{aspect-ratio:16/9;height:auto}.report-info{padding:20px 24px}.hero-name{font-size:clamp(2.5rem,12vw,4rem)}}
+@media(max-width:480px){.nav-links{gap:12px}.nav-links a{font-size:0.75rem}.section{padding:64px 16px}.project-info{padding:20px}}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner"><a href="#" class="nav-logo">韶涵<span>.</span></a><ul class="nav-links"><li><a href="#reports">拆解</a></li><li><a href="#projects">作品</a></li><li><a href="#analysis">分析</a></li><li><a href="#resume">简历</a></li></ul></div></nav>
+
+<section class="hero" id="home"><div class="hero-grid"></div><div class="hero-glow"></div><div class="hero-content"><p class="hero-eyebrow">Game Designer · 策划</p><h1 class="hero-name">吴韶涵<span class="en">Wu Shaohan</span></h1><p class="hero-title">关卡与系统策划 · 游戏机制设计与实现</p><div class="hero-actions"><a href="#projects" class="btn btn-primary">查看作品</a><a href="#resume" class="btn btn-outline">联系我</a></div></div><div class="scroll-indicator"><span>SCROLL</span><div class="scroll-line"></div></div></section>
+
+<section class="section" id="about"><div class="section-inner"><div class="section-header"><p class="section-tag">About</p><h2 class="section-title">关于我</h2></div><div class="about-grid"><div class="about-text"><h3>用代码实现设计，用设计驱动体验</h3><p>我是吴韶涵，一名热爱游戏设计的策划。我相信好的游戏设计来自于对玩家体验的深刻理解——从底层机制到上层体验，每一个细节都在塑造玩家的感受。</p><p>我擅长在 Unity 和 Unreal Engine 中搭建 3C 系统、角色能力和交互机制，也热衷于拆解分析优秀游戏的系统设计。无论是强制透视的视觉魔术，还是闪电侠式的超速位移，我都喜欢亲自动手实现。</p></div><div class="about-highlights"><div class="highlight-card"><div class="highlight-icon amber">&#9881;</div><h4>系统策划</h4><p>战斗机制、角色能力、资源循环的系统设计与平衡</p></div><div class="highlight-card"><div class="highlight-icon cyan">&#9000;</div><h4>脚本实现</h4><p>C# (Unity) · C++ (UE5) · 原型搭建与核心功能落地</p></div><div class="highlight-card"><div class="highlight-icon cyan">&#127918;</div><h4>游戏分析</h4><p>从永劫无间到 MC，深入拆解机制设计的得与失</p></div><div class="highlight-card"><div class="highlight-icon amber">&#127919;</div><h4>关卡思维</h4><p>空间叙事、节奏控制、强制透视等关卡设计手法</p></div></div></div></div></section>
+
+<section class="section projects" id="reports"><div class="section-inner"><div class="section-header"><p class="section-tag">Deep Dive</p><h2 class="section-title">深度拆解报告</h2><p class="section-sub">完整的游戏系统设计与商业产品拆解文档，可下载查阅</p></div><div class="report-grid">
+
+<div class="report-card report-card-horizontal">
+<div class="report-media">
+<span class="report-badge">原创项目 GDD</span>
+<img src="assets/reports/images/xuanfang-mindmap-full.png" alt="玄方构域系统架构思维导图">
+</div>
+<div class="report-info">
+<h3>《玄方构域》深度体验与拆解分析报告</h3>
+<p class="report-meta">41 PAGES · 12 SYSTEMS · GODOT 4</p>
+<p class="report-desc">原创 2D 横版动作 RPG 完整设计文档。覆盖战斗、魂核、养成、装备、资源经济、关卡、Boss 等 12 大系统模块，包含战斗手感全量化参数、魂核去随机化机制创新、系统框架思维导图与工程规范。</p>
+<div class="report-footer">
+<span class="report-pages">共 41 页 · 点击展开思维导图</span>
+<a href="assets/reports/xuanfang-gdd.docx" download="《玄方构域》深度体验与拆解分析报告.docx" class="btn-code" style="display:inline-flex;align-items:center;gap:6px;">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+下载 PDF
+</a>
+</div>
+</div>
+</div>
+
+<div class="report-card">
+<div class="report-media">
+<span class="report-badge">商业游戏拆解</span>
+<img src="assets/reports/images/arknights-mindmap.png" alt="明日方舟终末地系统框架思维导图">
+</div>
+<div class="report-info">
+<h3>《明日方舟·终末地》深度体验和拆解分析报告</h3>
+<p class="report-meta">62 PAGES · 150H PLAY · MARKET DATA</p>
+<p class="report-desc">150 小时深度体验后的商业产品拆解。包含下载量/畅销榜/收入走势/TapTap 口碑等市场数据分析，角色收集、养成、箱庭探索、战斗、集成工业等 7 大核心系统拆解，以及整体优劣势评价与改善建议。</p>
+<div class="report-footer">
+<span class="report-pages">共 62 页 · 点击展开思维导图</span>
+<a href="assets/reports/arknights-endfield-analysis.pdf" download="《明日方舟·终末地》深度体验和拆解分析报告.pdf" class="btn-code" style="display:inline-flex;align-items:center;gap:6px;">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+下载 PDF
+</a>
+</div>
+</div>
+</div>
+
+</div></div></section>
+
+<section class="section projects" id="projects"><div class="section-inner"><div class="section-header"><p class="section-tag">Portfolio</p><h2 class="section-title">作品集</h2><p class="section-sub">亲手搭建的游戏机制原型，从概念到可玩的完整实现</p></div>
+
+<div class="project-card"><div class="project-media"><div class="project-badge">Unity · C#</div><video loop muted playsinline preload="metadata"><source src="assets/videos/project1-demo.mp4" type="video/mp4"></video><div class="video-play-overlay" data-action="toggle-video"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="project-info"><h3>强制透视抓取系统</h3><p class="project-subtitle">Forced Perspective Grab — Unity 原型</p><p class="project-desc">一个第一人称强制透视抓取系统。玩家可以抓取场景中的物体并将其"缩放"到手中，产生视觉上的透视欺骗效果。使用 CharacterController 而非 Rigidbody 以获得精确的移动控制，抓取采用父子级关系而非 FixedJoint 来避免物理异常。支持任意尺寸物体的抓取，通过记录并恢复原始缩放值实现通用兼容。</p><div class="project-tech"><span class="tech-tag">Unity</span><span class="tech-tag">C#</span><span class="tech-tag">CharacterController</span><span class="tech-tag">Coyote Time</span><span class="tech-tag">Jump Buffer</span></div><div class="project-notes"><h4>设计决策</h4><ul><li>CharacterController 替代 Rigidbody — 精确控制跳跃与碰撞，不受物理引擎干扰</li><li>父子级直接绑定而非 FixedJoint — 避免父级缩放时物理表现的异常</li><li>记录原始缩放而非预设值 — 任意尺寸物体均可抓取，不受统一大小限制</li></ul></div><div class="project-links"></div></div></div>
+
+<div class="project-card"><div class="project-media"><div class="project-badge">Godot 4 · Action RPG</div><video loop muted playsinline preload="metadata"><source src="assets/videos/project2-demo.mp4" type="video/mp4"></video><div class="video-play-overlay" data-action="toggle-video"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="project-info"><h3>2D 横版动作 RPG 系统原型</h3><p class="project-subtitle">Action RPG System Prototype — Godot 4</p><p class="project-desc">围绕“主城整备 → 任务推进 → 关卡挑战 → 奖励成长”的 RPG 核心循环设计系统原型。项目包含战斗节奏、角色成长、装备强化、Echo 养成等系统，本视频展示其中 Boss 战斗设计与实际运行效果。</p><div class="project-tech"><span class="tech-tag">Godot 4</span><span class="tech-tag">System Design</span><span class="tech-tag">Combat Design</span><span class="tech-tag">Boss Design</span></div><div class="project-notes"><h4>Boss 战斗设计</h4><ul><li>围绕攻击预警、玩家反应窗口和技能节奏设计 Boss 战斗循环</li><li>通过攻击阶段变化控制战斗压力，引导玩家观察、闪避与寻找输出机会</li><li>结合试玩反馈调整技能节奏、战斗反馈和玩家理解成本</li></ul></div><div class="project-links"></div></div></div></div></section>
+
+<section class="section" id="analysis"><div class="section-inner"><div class="section-header"><p class="section-tag">Analysis</p><h2 class="section-title">短篇分析</h2><p class="section-sub">从玩家到设计师视角，拆解优秀游戏的系统与机制</p></div><div class="analysis-grid"><div class="analysis-card"><div class="game-icon">&#9876;</div><span class="tag">永劫无间</span><h4>蓝白博弈与回阳镜设计</h4><p>国内首个武侠吃鸡的蓝白博弈是新颖且大胆的设计，入门级普攻/蓄力/振刀到进阶的控距拉扯，竞技性和观赏性兼具。回阳镜是天才设计——两队封闭单挑，高风险高回报，解决长 TTK 游戏的观赛与节奏问题。同时也面临高延迟帧数敏感、新人门槛过高的结构性挑战。</p></div><div class="analysis-card"><div class="game-icon">&#9935;</div><span class="tag">Minecraft</span><h4>沙盒的自由度与驱动力</h4><p>超高自由度 + 完善规则，让玩家自己决定玩什么、创造什么。红石、指令、模组生态带来极深的内容纵深，但自由度也是一把双刃剑——玩家需要自我驱动，缺少系统引导导致大量玩家在"不知道该做什么"中流失。解决驱动力问题是开放沙盒设计的核心命题。</p></div><div class="analysis-card"><div class="game-icon">&#127183;</div><span class="tag">杀戮尖塔 / 月圆之夜</span><h4>Roguelike 卡牌的成就与瓶颈</h4><p>职业差异化鲜明、牌组构筑驱动成就感，每一层都是对策略的检验。框架虽好但基本模式不变，核心内容消耗完后玩家动力自然衰减。进阶难度高压且需长期积累，这也是该类游戏品类迭代的重要课题。</p></div><div class="analysis-card"><div class="game-icon">&#127984;</div><span class="tag">英雄联盟 / 湖景谷 / 更多</span><h4>资源置换与恐怖游戏留存</h4><p>通过复盘打野路径理解"时间成本"与"收益风险"的博弈。湖景谷的恐怖感来源于通过各种系统方向让玩家"留下来"。揍击派对、Apex、生化危机、Balatro、地平线、土豆兄弟等广泛涉猎，跨品类视角帮助建立更完整的游戏设计思维。</p></div></div></div></section>
+
+<section class="section resume-cta" id="resume"><div class="section-inner"><p class="section-tag">Resume</p><h2 class="section-title">了解更多</h2><p>如果你对我的背景和能力感兴趣，欢迎查看我的详细简历</p><a href="assets/resume/简历.pdf" class="btn-resume" target="_blank" download><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>下载简历</a></div></section>
+
+<footer class="footer"><p>&copy; 2026 吴韶涵 · Built with care</p></footer>
+
+
+
+
+
+<script>
+
+document.querySelectorAll('[data-action="toggle-video"]').forEach(function(el){
+  el.addEventListener('click',function(){
+    var v=this.parentElement.querySelector('video');
+    if(v.paused){v.play();this.style.opacity='0';this.style.pointerEvents='none';}
+    else{v.pause();this.style.opacity='1';this.style.pointerEvents='auto';}
+  });
+});
+
+var obs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    var v=e.target.querySelector('video');
+    var o=e.target.querySelector('[data-action="toggle-video"]');
+    if(!v)return;
+    if(e.isIntersecting){v.play();if(o){o.style.opacity='0';o.style.pointerEvents='none';}}
+    else{v.pause();if(o){o.style.opacity='1';o.style.pointerEvents='auto';}}
+  });
+},{threshold:0.5});
+document.querySelectorAll('.project-media').forEach(function(el){obs.observe(el);});
+
+document.querySelectorAll('.nav-links a, .hero-actions a[href^="#"]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    var h=this.getAttribute('href');
+    if(h&&h.startsWith('#')){e.preventDefault();var t=document.querySelector(h);if(t)t.scrollIntoView({behavior:'smooth'});}
+  });
+});
+
+var secs=document.querySelectorAll('section[id]'),links=document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll',function(){
+  var cur='';
+  secs.forEach(function(s){if(window.scrollY>=s.offsetTop-100)cur=s.getAttribute('id');});
+  links.forEach(function(l){l.style.color=l.getAttribute('href')==='#'+cur?'var(--text-primary)':'';});
+});
+
+// 思维导图弹窗
+// 思维导图展开/收起
+document.querySelectorAll('.report-card').forEach(function(card){
+  card.addEventListener('click',function(e){
+    if(e.target.closest('a')||e.target.closest('button'))return;
+    card.classList.toggle('expanded');
+    if(card.classList.contains('expanded')){
+      setTimeout(function(){card.scrollIntoView({behavior:'smooth',block:'start'});},350);
+    }
+  });
+});
+</script>
+</body>
+</html>
